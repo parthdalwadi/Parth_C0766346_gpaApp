@@ -12,6 +12,7 @@ struct Student{
     
     var first_name: String
     var last_name: String
+   
     var id: String
     
     static var all_Students_Info = [Student]()

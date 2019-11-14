@@ -57,6 +57,7 @@ class Registration: UIViewController {
             let ok = UIAlertAction(title: "OK", style: .cancel, handler: {(action) in
             let s = Student(first_name: self.firstName.text!, last_name: self.lastName.text!, id: self.id.text!)
             Student.all_Students_Info.append(s)
+            
                 print(Student.all_Students_Info)
             self.firstName.text = ""
             self.lastName.text = ""
@@ -93,6 +94,10 @@ class Registration: UIViewController {
     }
     */
     override func viewWillDisappear(_ animated: Bool) {
-        d_studentList?.tableView.reloadData()
+        
+        
+        d_studentList?.updateStudentList()
+        
+        
     }
 }

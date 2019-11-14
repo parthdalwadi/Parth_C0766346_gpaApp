@@ -8,11 +8,23 @@
 
 import UIKit
 
-class Student_List: UITableViewController {
+class Student_List: UITableViewController, UISearchBarDelegate {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    var Data = [String]()
+    var filteredData = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        
+        filteredData = Data
+        print("inside view did load")
+        print(filteredData)
+        searchBar.delegate = self
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -24,25 +36,45 @@ class Student_List: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        print(Data)
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Student.all_Students_Info.count
+        return filteredData.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "s_name", for: indexPath)
         
-        cell.textLabel?.text = Student.all_Students_Info[indexPath.row].first_name + " " + Student.all_Students_Info[indexPath.row].last_name
+        cell.textLabel?.text = filteredData[indexPath.row]
         // Configure the cell...
 
         return cell
     }
     
-   
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredData = searchText.isEmpty ? Data : Data.filter { (item: String) -> Bool in
+                
+                return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            }
+            
+            tableView.reloadData()
+    }
+    
+    func updateStudentList(){
+            Data = []
+        for i in Student.all_Students_Info.indices{
+            let s = Student.all_Students_Info[i]
+            Data.append(s.first_name + " " + s.last_name)
+        }
+        print(Data)
+        filteredData = Data
+        tableView.reloadData()
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.
