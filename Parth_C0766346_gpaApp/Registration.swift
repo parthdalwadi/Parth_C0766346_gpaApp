@@ -82,7 +82,7 @@ class Registration: UIViewController {
             let s = Student(first_name: self.firstName.text!, last_name: self.lastName.text!, id: self.id.text!)
             Student.all_Students_Info.append(s)
             
-                print(Student.all_Students_Info)
+                
             self.firstName.text = ""
             self.lastName.text = ""
             self.id.text = ""
