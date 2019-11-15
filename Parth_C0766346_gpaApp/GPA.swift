@@ -7,11 +7,11 @@
 //
 
 import UIKit
-
+import AVFoundation
 class GPA: UIViewController {
 
     
-    
+    var audioplayer: AVAudioPlayer!
     
     @IBOutlet var cource_name: [UILabel]!
     
@@ -34,28 +34,44 @@ class GPA: UIViewController {
 
     @IBAction func calculate_gpa(_ sender: UIButton) {
         
-        var GPA = 0.0
-        var total_credit = 0.0
-    
-        for i in cource_name.indices{
+        var totalGP = 0.0
+            var total_credit = 0.0
+            var GPA = 0.0
         
-        let marks = Int(cource_marks[i].text!)
-        let GP = Double(marks_to_GP(marks!))
+            for i in cource_name.indices{
             
-        let credit = findCourceCredit(cource_name[i].text!)
-        
-    
+            let marks = Int(cource_marks[i].text!)
+            let GP = Double(marks_to_GP(marks!))
+                
+            let credit = findCourceCredit(cource_name[i].text!)
             
-        GPA += (GP * credit)
+        
+                
+            totalGP += (GP * credit)
+                
+            total_credit += Double(findCourceCredit(cource_name[i].text!))
             
-        total_credit += Double(findCourceCredit(cource_name[i].text!))
+            }
+            
+            GPA = totalGP/total_credit
         
-        }
-    
-        gpa.text! = String(format: "GPA %.2f / 4", (GPA/total_credit))
+            gpa.text! = String(format: "GPA: %.2f / 4", (GPA))
+        
+            if GPA >= 2.8 {
+                print("playing music")
+                playMusic()}
     
         
     
+        
+    }
+    
+    func playMusic(){
+        
+        
+        let soundURL = Bundle.main.url(forResource: "Win", withExtension: "wav")
+        audioplayer = try! AVAudioPlayer(contentsOf: soundURL!)
+        audioplayer.play()
         
     }
     

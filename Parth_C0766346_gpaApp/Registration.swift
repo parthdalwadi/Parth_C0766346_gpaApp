@@ -28,6 +28,19 @@ class Registration: UIViewController {
                        
         self.error_msg() ; return }
         
+        // if id is taken - return with proper alert.
+        
+        for s in Student.all_Students_Info{
+            
+            if s.id == id.text {
+             
+                idTakenAlert()
+                return
+                
+            }
+            
+        }
+        
         saveAlert()
         
     }
@@ -47,6 +60,17 @@ class Registration: UIViewController {
         aC.addAction(y)
         self.present(aC, animated: true, completion: nil)
         
+        
+    }
+    
+    func idTakenAlert(){
+        
+        let aC = UIAlertController(title: "Sorry!!", message: "ID: \(id.text!) is already taken.", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
+        aC.addAction(ok)
+        self.present(aC, animated: true, completion: nil)
         
     }
 
