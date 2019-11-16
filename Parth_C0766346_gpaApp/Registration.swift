@@ -60,7 +60,6 @@ class Registration: UIViewController {
         aC.addAction(y)
         self.present(aC, animated: true, completion: nil)
         
-        
     }
     
     func idTakenAlert(){

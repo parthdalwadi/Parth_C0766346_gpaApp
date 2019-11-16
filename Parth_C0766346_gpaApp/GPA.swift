@@ -12,19 +12,29 @@ class GPA: UIViewController {
 
     
     var audioplayer: AVAudioPlayer!
-    
+    var d_semList: SemList?
     @IBOutlet var cource_name: [UILabel]!
+    
     
     
     @IBOutlet var cource_marks: [UITextField]!
     
-    
-    @IBOutlet weak var gpa: UILabel!
+
     
     @IBOutlet weak var label_gpa: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for i in cource_name.indices{
+            
+            cource_name[i].text = Cource.subjects[d_semList!.semIndex][i]
+            cource_marks[i].text = String(Student.all_Students_Info[d_semList!.stuIndex].Marks[d_semList!.semIndex][i])
+            
+            
+        }
 
+        label_gpa.text! = String(format: "GPA: %.2f / 4", Student.all_Students_Info[d_semList!.stuIndex].GPA[d_semList!.semIndex])
+        
         
         
         
@@ -34,13 +44,35 @@ class GPA: UIViewController {
 
     @IBAction func calculate_gpa(_ sender: UIButton) {
         
-        var totalGP = 0.0
+        
+        
+        
+        var isMarksEmpty: Bool = false
+        
+        for m in cource_marks{
+            
+            if m.text == "" {isMarksEmpty = true; error_msg(); break}
+            
+            
+        }
+        
+        if !isMarksEmpty{
+                
+            
+            
+            var totalGP = 0.0
             var total_credit = 0.0
-            var GPA = 0.0
+            var g_p_a = 0.0
         
             for i in cource_name.indices{
             
+                
+                
             let marks = Int(cource_marks[i].text!)
+            
+            Student.all_Students_Info[d_semList!.stuIndex].Marks[d_semList!.semIndex][i] = marks!
+            
+            
             let GP = Double(marks_to_GP(marks!))
                 
             let credit = findCourceCredit(cource_name[i].text!)
@@ -53,16 +85,26 @@ class GPA: UIViewController {
             
             }
             
-            GPA = totalGP/total_credit
+            g_p_a = totalGP/total_credit
+            
+            Student.all_Students_Info[d_semList!.stuIndex].GPA[d_semList!.semIndex] = g_p_a
+            
         
-            gpa.text! = String(format: "GPA: %.2f / 4", (GPA))
+            label_gpa.text! = String(format: "GPA: %.2f / 4", (g_p_a))
         
-            if GPA >= 2.8 {
-                print("playing music")
-                playMusic()}
+            if g_p_a >= 2.8 { playMusic() }
+            
+        }
+    }
     
+    func error_msg(){
         
-    
+        let aC = UIAlertController(title: nil, message: "Please fill marks for all subjects!", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
+        aC.addAction(ok)
+        self.present(aC, animated: true, completion: nil)
         
     }
     
@@ -97,8 +139,11 @@ class GPA: UIViewController {
     func findCourceCredit(_ courceName: String) -> Double{
         
         return Double(String(courceName[courceName.index(before: courceName.endIndex)]))!
-
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        d_semList?.tableView.reloadData()
     }
     /*
     // MARK: - Navigation

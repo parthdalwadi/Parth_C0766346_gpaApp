@@ -1,27 +1,22 @@
 //
-//  Student_List.swift
+//  SemList.swift
 //  Parth_C0766346_gpaApp
 //
-//  Created by Parth Dalwadi on 2019-11-13.
+//  Created by Parth Dalwadi on 2019-11-15.
 //  Copyright © 2019 Parth Dalwadi. All rights reserved.
 //
 
 import UIKit
 
-class Student_List: UITableViewController, UISearchBarDelegate {
-
-    @IBOutlet weak var searchBar: UISearchBar!
-    var Data = [String]()
-    var filteredData = [String]()
-    var stu_index = -1
+class SemList: UITableViewController {
+    var semIndex = -1
+    var stuIndex = -1
+    var d_studentList: Student_List?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        filteredData = Data
-        searchBar.delegate = self
+        stuIndex = d_studentList!.stu_index
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -35,47 +30,29 @@ class Student_List: UITableViewController, UISearchBarDelegate {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return filteredData.count
+        return Cource.semList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "s_name", for: indexPath)
-        
-        cell.textLabel?.text = filteredData[indexPath.row]
-        cell.detailTextLabel?.text =
-            String(format: "%.2f", Student.all_Students_Info[indexPath.row].CGPA)
-        // Configure the cell...
-        
-        return cell
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredData = searchText.isEmpty ? Data : Data.filter { (item: String) -> Bool in
-                
-                return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-            }
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "sem"){
+        cell.textLabel?.text = Cource.semList[indexPath.row]
             
-            tableView.reloadData()
-    }
-    
-    func updateStudentList(){
-            Data = []
-        for i in Student.all_Students_Info.indices{
-            let s = Student.all_Students_Info[i]
-            Data.append(s.first_name + " " + s.last_name)
+        cell.detailTextLabel?.text = String(format: "%.2f",Student.all_Students_Info[stuIndex].GPA[indexPath.row])
+        // Configure the cell...
+
+            return cell
+            
         }
         
-        filteredData = Data
-        tableView.reloadData()
-        
+        return UITableViewCell()
     }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -111,7 +88,9 @@ class Student_List: UITableViewController, UISearchBarDelegate {
         return true
     }
     */
-
+    override func viewWillDisappear(_ animated: Bool) {
+        d_studentList?.tableView.reloadData()
+    }
     
     // MARK: - Navigation
 
@@ -120,23 +99,16 @@ class Student_List: UITableViewController, UISearchBarDelegate {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         
-        if let reg = segue.destination as? Registration{
+        if let gpaV = segue.destination as? GPA{
+            gpaV.d_semList = self
             
-            reg.d_studentList = self
-            
-        }
-        
-        if let sems = segue.destination as? SemList{
-            
-            sems.d_studentList = self
-        
-            if let studentCell = sender as? UITableViewCell{
-                stu_index = tableView.indexPath(for: studentCell)!.row
-                
+            if let semCell = sender as? UITableViewCell{
+                semIndex = tableView.indexPath(for: semCell)!.row
                 
             }
-            
         }
+        
+        
     }
     
 

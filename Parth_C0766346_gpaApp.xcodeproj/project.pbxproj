@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9B028E31237DD7FD00F24699 /* GPA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B028E30237DD7FD00F24699 /* GPA.swift */; };
+		F22BDA66237F2FEA00C3E1D4 /* cource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22BDA65237F2FEA00C3E1D4 /* cource.swift */; };
+		F22BDA68237F349700C3E1D4 /* SemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22BDA67237F349700C3E1D4 /* SemList.swift */; };
 		F2B99FB2237F13F100A13213 /* Win.wav in Resources */ = {isa = PBXBuildFile; fileRef = F2B99FB1237F13F100A13213 /* Win.wav */; };
 		F2F892DC237C793D0075369F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F892DB237C793D0075369F /* AppDelegate.swift */; };
 		F2F892DE237C793D0075369F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F892DD237C793D0075369F /* SceneDelegate.swift */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		9B028E30237DD7FD00F24699 /* GPA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPA.swift; sourceTree = "<group>"; };
+		F22BDA65237F2FEA00C3E1D4 /* cource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cource.swift; sourceTree = "<group>"; };
+		F22BDA67237F349700C3E1D4 /* SemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemList.swift; sourceTree = "<group>"; };
 		F2B99FB1237F13F100A13213 /* Win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Win.wav; sourceTree = "<group>"; };
 		F2F892D8237C793D0075369F /* Parth_C0766346_gpaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parth_C0766346_gpaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F892DB237C793D0075369F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,9 +84,11 @@
 				F2F892E6237C793E0075369F /* LaunchScreen.storyboard */,
 				F2F892E9237C793E0075369F /* Info.plist */,
 				F2F892EF237C7F820075369F /* Registration.swift */,
-				F2F892F1237C89460075369F /* Student_Data.swift */,
 				F2F892F3237C8B180075369F /* Student_List.swift */,
+				F22BDA67237F349700C3E1D4 /* SemList.swift */,
 				9B028E30237DD7FD00F24699 /* GPA.swift */,
+				F2F892F1237C89460075369F /* Student_Data.swift */,
+				F22BDA65237F2FEA00C3E1D4 /* cource.swift */,
 			);
 			path = Parth_C0766346_gpaApp;
 			sourceTree = "<group>";
@@ -159,6 +165,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F22BDA66237F2FEA00C3E1D4 /* cource.swift in Sources */,
+				F22BDA68237F349700C3E1D4 /* SemList.swift in Sources */,
 				F2F892DC237C793D0075369F /* AppDelegate.swift in Sources */,
 				F2F892F2237C89460075369F /* Student_Data.swift in Sources */,
 				9B028E31237DD7FD00F24699 /* GPA.swift in Sources */,
