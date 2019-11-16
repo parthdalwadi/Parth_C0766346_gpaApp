@@ -23,7 +23,12 @@ class GPA: UIViewController {
     
     @IBOutlet weak var label_gpa: UILabel!
     override func viewDidLoad() {
+        
+        
+        
         super.viewDidLoad()
+        self.navigationItem.title = Cource.semList[d_semList!.semIndex]
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(removeKeyBoard))
         self.view.addGestureRecognizer(tap)
             // Do any additional setup after loading the view.

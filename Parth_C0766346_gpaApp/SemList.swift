@@ -18,6 +18,8 @@ class SemList: UITableViewController {
         super.viewDidLoad()
         stuIndex = d_studentList!.stu_index
         
+        self.navigationItem.title = "\(Student.all_Students_Info[stuIndex].first_name)"
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
