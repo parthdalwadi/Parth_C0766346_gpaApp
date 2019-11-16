@@ -24,6 +24,11 @@ class GPA: UIViewController {
     @IBOutlet weak var label_gpa: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(removeKeyBoard))
+        self.view.addGestureRecognizer(tap)
+            // Do any additional setup after loading the view.
+        
+        
         
         for i in cource_name.indices{
             
@@ -33,7 +38,7 @@ class GPA: UIViewController {
             
         }
 
-        label_gpa.text! = String(format: "GPA: %.2f / 4", Student.all_Students_Info[d_semList!.stuIndex].GPA[d_semList!.semIndex])
+        label_gpa.text! = String(format: "GPA: %.1f / 4", Student.all_Students_Info[d_semList!.stuIndex].GPA[d_semList!.semIndex])
         
         
         
@@ -41,7 +46,13 @@ class GPA: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @objc func removeKeyBoard(){
+        
+        for i in cource_marks{
+        i.resignFirstResponder()
+        }
+        
+    }
     @IBAction func calculate_gpa(_ sender: UIButton) {
         
         

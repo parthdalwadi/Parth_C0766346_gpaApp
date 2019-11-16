@@ -17,15 +17,30 @@ class Registration: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let tap = UITapGestureRecognizer(target: self, action: #selector(removeKeyBoard))
+        self.view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func removeKeyBoard(){
+        
+        firstName.resignFirstResponder()
+        lastName.resignFirstResponder()
+        id.resignFirstResponder()
+        
+    }
+    
+        
+    @IBAction func hideKeyPad(_ sender: UITextField) {
+        
+        sender.resignFirstResponder()
     }
     
     @IBAction func saveData(_ sender: UIButton) {
         
         
         guard self.firstName.text != "" && self.lastName.text != "" && self.id.text != "" else{
-                       
+            
         self.error_msg() ; return }
         
         // if id is taken - return with proper alert.
@@ -40,7 +55,6 @@ class Registration: UIViewController {
             }
             
         }
-        
         saveAlert()
         
     }
@@ -80,13 +94,9 @@ class Registration: UIViewController {
             let ok = UIAlertAction(title: "OK", style: .cancel, handler: {(action) in
             let s = Student(first_name: self.firstName.text!, last_name: self.lastName.text!, id: self.id.text!)
             Student.all_Students_Info.append(s)
-            
-                
             self.firstName.text = ""
             self.lastName.text = ""
             self.id.text = ""
-            
-                
                 
             })
             

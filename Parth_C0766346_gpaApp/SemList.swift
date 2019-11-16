@@ -43,7 +43,7 @@ class SemList: UITableViewController {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "sem"){
         cell.textLabel?.text = Cource.semList[indexPath.row]
             
-        cell.detailTextLabel?.text = String(format: "%.2f",Student.all_Students_Info[stuIndex].GPA[indexPath.row])
+        cell.detailTextLabel?.text = String(format: "%.1f",Student.all_Students_Info[stuIndex].GPA[indexPath.row])
         // Configure the cell...
 
             return cell
