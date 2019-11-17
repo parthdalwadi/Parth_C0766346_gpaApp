@@ -42,8 +42,8 @@ class GPA: UIViewController {
             
             
         }
-
-        label_gpa.text! = String(format: "GPA: %.1f / 4", Student.all_Students_Info[d_semList!.stuIndex].GPA[d_semList!.semIndex])
+        let sGpa = Student.all_Students_Info[d_semList!.stuIndex].GPA[d_semList!.semIndex]
+        label_gpa.text! = (sGpa == -1.0) ? "GPA: -- " : String(format: "GPA: %.1f / 4", sGpa)
         
         
         

@@ -12,11 +12,28 @@ struct Student{
     
     var first_name: String
     var last_name: String
+    var full_name: String{
+        
+        return first_name + " " + last_name
+        
+    }
     var id: String
     var Marks =  Array(repeating: Array(repeating: 0, count: 5 ), count: 3)
-    var GPA = Array(repeating: 0.0, count: 3 )
+    var GPA = Array(repeating: -1.0, count: 3 )
     var CGPA: Double{
-        return (GPA[0] + GPA[1] + GPA[2])/Double(GPA.count)
+        var total = 0.0
+        var semCount = 0
+        var isAvailable = false
+        for gpa in GPA{
+            
+            if gpa != -1.0 {
+                isAvailable = true
+                
+                total += gpa
+                semCount += 1
+            }
+        }
+        return isAvailable ? (total/Double(semCount)) : -1.0
     }
     
     static var all_Students_Info = [Student]()

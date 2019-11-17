@@ -44,11 +44,11 @@ class SemList: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "sem"){
         cell.textLabel?.text = Cource.semList[indexPath.row]
-            
-        cell.detailTextLabel?.text = String(format: "%.1f",Student.all_Students_Info[stuIndex].GPA[indexPath.row])
+        let semGpa = Student.all_Students_Info[stuIndex].GPA[indexPath.row]
+            cell.detailTextLabel?.text = (semGpa == -1.0) ? "GPA: NA" : String(format: "GPA: %.1f", semGpa)
         // Configure the cell...
 
-            return cell
+        return cell
             
         }
         

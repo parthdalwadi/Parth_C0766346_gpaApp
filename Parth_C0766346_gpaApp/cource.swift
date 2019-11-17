@@ -10,7 +10,7 @@ import Foundation
 
 struct Cource{
     
-    static var semList = ["Semester 1", "Semester 2", "Semester 3"]
+    static var semList = ["Semester I", "Semester II", "Semester III"]
     
     static var subjects = [
     

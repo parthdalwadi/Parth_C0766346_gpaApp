@@ -128,8 +128,8 @@ class Registration: UIViewController {
     */
     override func viewWillDisappear(_ animated: Bool) {
         
-        
-        d_studentList?.updateStudentList()
+        d_studentList?.filteredData = Student.all_Students_Info
+        d_studentList?.tableView.reloadData()
         
         
     }
