@@ -13,6 +13,7 @@ class Student_List: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     
     
+    
     var filteredData = [Student]()
     var stu_index = -1
     
@@ -20,8 +21,9 @@ class Student_List: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(removeKeyBoard))
-        self.view.addGestureRecognizer(tap)
+        
+        
+        
         filteredData = Student.all_Students_Info
         searchBar.delegate = self
         
@@ -33,11 +35,6 @@ class Student_List: UITableViewController, UISearchBarDelegate {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    @objc func removeKeyBoard(){
-        
-        searchBar.resignFirstResponder()
-        
-    }
     
     
     
