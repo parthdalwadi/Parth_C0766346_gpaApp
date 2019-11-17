@@ -50,7 +50,7 @@ class Student_List: UITableViewController, UISearchBarDelegate {
         
         cell.textLabel?.text = filteredData[indexPath.row]
         cell.detailTextLabel?.text =
-            String(format: "%.2f", Student.all_Students_Info[indexPath.row].CGPA)
+            String(format: "%.1f", Student.all_Students_Info[indexPath.row].CGPA)
         // Configure the cell...
         
         return cell

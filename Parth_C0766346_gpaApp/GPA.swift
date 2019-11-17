@@ -58,6 +58,13 @@ class GPA: UIViewController {
         }
         
     }
+    
+    
+    @IBAction func emptyFields(_ sender: UITextField) {
+        
+        sender.text = ""
+    }
+    
     @IBAction func calculate_gpa(_ sender: UIButton) {
         
         
