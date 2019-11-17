@@ -23,7 +23,7 @@ class Student_List: UITableViewController, UISearchBarDelegate {
         
         
         
-        
+        self.searchBar.endEditing(true)
         filteredData = Student.all_Students_Info
         searchBar.delegate = self
         
@@ -45,6 +45,15 @@ class Student_List: UITableViewController, UISearchBarDelegate {
         // #warning Incomplete implementation, return the number of sections
 
         return 1
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder() // hides the keyboard.
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
