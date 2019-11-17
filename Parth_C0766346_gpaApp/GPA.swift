@@ -113,7 +113,7 @@ class GPA: UIViewController {
             Student.all_Students_Info[d_semList!.stuIndex].GPA[d_semList!.semIndex] = g_p_a
             
         
-            label_gpa.text! = String(format: "GPA: %.2f / 4", (g_p_a))
+            label_gpa.text! = String(format: "GPA: %.1f / 4", (g_p_a))
         
             if g_p_a >= 2.8 { playMusic() }
             
