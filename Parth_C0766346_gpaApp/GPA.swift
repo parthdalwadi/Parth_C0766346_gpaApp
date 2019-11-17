@@ -27,6 +27,7 @@ class GPA: UIViewController {
         
         
         super.viewDidLoad()
+        
         self.navigationItem.title = Cource.semList[d_semList!.semIndex]
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(removeKeyBoard))
@@ -68,19 +69,18 @@ class GPA: UIViewController {
     @IBAction func calculate_gpa(_ sender: UIButton) {
         
         
-        
+        for i in cource_marks{
+        i.resignFirstResponder()
+        }
         
         var isMarksEmpty: Bool = false
         
         for m in cource_marks{
-            
             if m.text == "" {isMarksEmpty = true; error_msg(); break}
-            
-            
         }
         
         if !isMarksEmpty{
-                
+        
             
             
             var totalGP = 0.0

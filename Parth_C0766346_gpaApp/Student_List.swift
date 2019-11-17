@@ -20,7 +20,8 @@ class Student_List: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(removeKeyBoard))
+        self.view.addGestureRecognizer(tap)
         filteredData = Student.all_Students_Info
         searchBar.delegate = self
         
@@ -31,6 +32,15 @@ class Student_List: UITableViewController, UISearchBarDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    @objc func removeKeyBoard(){
+        
+        searchBar.resignFirstResponder()
+        
+    }
+    
+    
+    
 
     // MARK: - Table view data source
 

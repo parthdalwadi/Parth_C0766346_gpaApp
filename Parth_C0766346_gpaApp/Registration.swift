@@ -55,7 +55,11 @@ class Registration: UIViewController {
             }
             
         }
+        firstName.resignFirstResponder()
+        lastName.resignFirstResponder()
+        id.resignFirstResponder()
         saveAlert()
+        
         
     }
     
