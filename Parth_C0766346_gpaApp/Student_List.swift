@@ -25,6 +25,7 @@ class Student_List: UITableViewController, UISearchBarDelegate {
         
         self.searchBar.endEditing(true)
         filteredData = Student.all_Students_Info
+        
         searchBar.delegate = self
         
         
@@ -54,7 +55,11 @@ class Student_List: UITableViewController, UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        filteredData = Student.all_Students_Info
+        tableView.reloadData()
     }
+    
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
